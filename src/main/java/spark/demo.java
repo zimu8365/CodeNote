@@ -93,7 +93,8 @@ public class demo {
             new Tuple2<String, Integer>("武当", 89),
             new Tuple2<String, Integer>("少林", 77));
         final JavaPairRDD<String, Integer> listRDD = sc.parallelizePairs(list);
-        JavaPairRDD<String, Integer> rPairRDD = listRDD.reduceByKey((x, y) -> x + y);
+        final JavaPairRDD<String, Integer> rPairRDD = listRDD.reduceByKey((x, y) -> x + y);
         rPairRDD.foreach(tuple -> System.out.println("门派: " + tuple._1 + "->" + tuple._2));
     }
+    
 }
